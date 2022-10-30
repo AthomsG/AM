@@ -1,0 +1,241 @@
+DLBCL sample (LYM number),Analysis Set,Follow-up (years),Status at follow-up,Subgroup,IPI Group,Germinal center B cell signature,Lymph node signature,Proliferation signature,BMP6,MHC class II signature,Outcome predictor score
+2,Training,4,Alive,GCB,Low,0.28,-0.07,-0.56,0.46,0.57,-0.23
+4,Training,4.9,Alive,GCB,Medium,1.01,-1.15,-1.04,0.23,0.63,-0.38
+6,Training,5.6,Alive,GCB,Low,0.83,-2.11,0.52,-0.28,0.38,0.2
+7,Training,12.1,Alive,GCB,Medium,0.89,-1.33,0.01,-0.64,0.93,-0.41
+8,Training,0.6,Dead,ABC,Medium,0.27,-1.56,1.56,-0.67,-2.5,1.25
+11,Training,0.3,Dead,GCB,High,-0.05,0.06,-0.68,-0.38,-2.32,0.44
+12,Training,0.4,Dead,Type III,Medium,-0.78,-1.31,1.46,-0.63,-2.41,1.46
+15,Training,1.2,Dead,GCB,Medium,-0.22,-0.17,0.17,1.3,-1.32,0.96
+18,Training,2.4,Dead,GCB,Medium,0.9,-0.14,0.2,1.47,0.34,0.17
+22,Training,1.2,Dead,ABC,High,-0.05,-1.59,-0.11,0.38,0.12,0.46
+24,Training,8.8,Alive,GCB,Medium,1.29,-1.27,-0.25,-0.77,-0.66,-0.15
+25,Training,8.1,Alive,GCB,Low,1.56,0.62,0,-0.37,0.99,-1.03
+26,Training,5.2,Alive,Type III,Low,-0.34,0.12,-1.63,-1.69,0.18,-0.9
+27,Training,8.1,Alive,GCB,Medium,1.71,0.41,0.14,-0.38,0.67,-0.89
+30,Training,2.8,Dead,ABC,Low,-2.28,1,1.19,1.9,-0.95,1.58
+34,Training,4.5,Dead,Type III,High,-1.86,-0.86,-0.24,-0.51,-0.4,0.66
+41,Training,4.3,Alive,GCB,Low,0.93,0.84,0.14,-0.84,-1.25,-0.32
+44,Training,2.5,Dead,ABC,Low,-2.16,0.58,1.14,-0.6,-0.71,0.79
+45,Training,1.3,Dead,GCB,Low,0.6,0.94,0.3,-0.13,0.01,-0.38
+48,Training,0.1,Dead,Type III,High,-2.57,-1.03,-0.04,-0.3,-1.08,1.24
+50,Training,1.7,Dead,Type III,Low,-1.8,-1.38,0.32,-0.31,1.07,0.52
+51,Training,7.2,Alive,Type III,Low,-0.42,-0.33,-0.22,-0.79,0.81,-0.35
+59,Training,0.6,Dead,GCB,Low,0.44,0.62,-0.41,-0.9,0.14,-0.7
+61,Training,0,Dead,Type III,NA,-0.45,0.74,-0.28,0.26,-0.14,0
+62,Training,0.3,Dead,ABC,High,-0.5,0.44,0.19,-0.64,-0.03,-0.11
+65,Training,0.3,Dead,GCB,Medium,1.87,-0.9,0.31,0.63,-1.58,0.44
+66,Training,2.5,Dead,Type III,Medium,-1.68,-1.32,-0.2,-0.71,-0.41,0.67
+68,Training,10.8,Alive,ABC,Medium,-1.59,0.06,0.17,-0.32,0.31,0.29
+69,Training,7.7,Alive,ABC,NA,-0.6,0.36,0.13,0.96,0.35,0.3
+72,Training,5.9,Alive,GCB,Low,0.52,0.6,-0.69,0.51,-0.12,-0.27
+74,Training,16.9,Dead,GCB,Low,-0.52,-0.66,-0.73,-1.11,-0.51,-0.04
+76,Training,9.7,Alive,ABC,Medium,0.13,-1.18,0.65,1.53,0.84,0.63
+81,Training,10.1,Alive,ABC,Medium,-0.51,-1.76,1.42,1.34,1.3,0.94
+83,Training,1.6,Alive,Type III,Low,0.07,-0.95,-0.27,0.99,0.17,0.4
+91,Training,0.8,Dead,Type III,Medium,-0.03,1.35,-0.35,-0.54,0.2,-0.64
+92,Training,3.9,Dead,GCB,Medium,0.52,0.72,-0.14,-0.52,-0.71,-0.3
+93,Training,3.3,Dead,ABC,NA,-0.92,-1.5,0.37,-0.41,-0.43,0.74
+98,Training,7.1,Alive,GCB,Low,1.19,-0.23,0.07,0.44,-0.04,-0.12
+99,Training,3.3,Alive,GCB,Low,-0.02,1.37,-0.59,0.48,-0.56,-0.16
+100,Training,6.8,Alive,GCB,Low,-0.14,1.46,-0.49,-0.47,0.08,-0.61
+101,Training,0,Dead,Type III,Low,-1.75,0.47,0.82,2.69,-3.02,2.36
+104,Training,0.1,Dead,GCB,Low,1.43,1.39,0.35,-0.69,-0.08,-0.86
+108,Training,2.7,Dead,GCB,NA,0.2,0.1,0,0.6,0.89,-0.17
+109,Training,21.8,Alive,GCB,Low,1.39,1.92,-0.63,-0.93,0.79,-1.57
+110,Training,0.8,Dead,GCB,Medium,1.74,0.89,0.54,-0.94,1.01,-1.2
+115,Training,6.2,Dead,GCB,Medium,0.84,-0.65,-0.49,0.46,1.01,-0.37
+116,Training,7.2,Alive,ABC,Low,-0.47,1.25,0.05,0.87,0.67,-0.1
+117,Training,0.4,Dead,Type III,Medium,-2.29,-2.11,0.38,-0.44,0.03,1.14
+118,Training,7.2,Alive,ABC,Low,-0.48,0.58,0.27,-0.12,0.37,-0.09
+119,Training,6,Alive,GCB,Medium,1.52,-0.03,1.67,-0.44,-1.7,0.36
+120,Training,1,Dead,ABC,High,-0.44,-1.73,0.38,2.11,1.58,0.81
+121,Training,1.7,Alive,Type III,Medium,-0.91,0.62,-1.08,-1.55,0.39,-0.75
+122,Training,0.6,Dead,ABC,High,0.24,-2.34,1.4,-0.39,-2.36,1.46
+123,Training,2.3,Alive,GCB,High,1.95,0.45,-0.11,-0.26,1.04,-1.11
+124,Training,5.4,Dead,ABC,High,0.34,0.37,0.45,-0.03,-0.03,-0.09
+125,Training,4.1,Dead,Type III,Low,-1.62,-0.76,0.34,-0.86,0.41,0.34
+129,Training,14.4,Alive,GCB,Low,0.49,1.74,-0.52,-0.34,0.15,-0.86
+130,Training,14.2,Alive,GCB,Low,1.32,-1.5,-0.38,-0.65,0,-0.3
+132,Training,1.1,Dead,GCB,Medium,1.78,-0.21,-0.97,1.24,-1.45,0.14
+134,Training,0.7,Dead,ABC,Medium,-1.37,-1.4,-0.13,-0.28,-1.58,1.12
+136,Training,4,Alive,GCB,Medium,0.15,0.23,-0.71,-0.8,0.68,-0.73
+144,Training,1,Dead,ABC,Medium,0.68,-1.39,1.26,0.06,-0.14,0.52
+147,Training,1.7,Alive,ABC,Low,1.63,0.31,0.54,-0.31,-0.34,-0.41
+151,Training,2,Alive,ABC,Medium,-1.51,1.56,0.22,-0.2,0.65,-0.16
+152,Training,0.4,Dead,ABC,Low,-1.25,-0.45,1.16,-0.26,-2.19,1.35
+154,Training,1.9,Alive,Type III,Medium,-0.93,-1.48,-0.92,-1.19,-0.33,0.15
+158,Training,9.7,Alive,GCB,Medium,0.93,2.13,0.01,-1.22,0.24,-1.25
+159,Training,0.1,Dead,Type III,NA,-2.15,0.41,-0.52,-1.34,0.07,-0.04
+160,Training,7.4,Alive,ABC,Low,1.39,2.14,-0.54,-0.19,0.54,-1.29
+161,Training,5,Alive,ABC,Low,-0.75,-1.66,0.06,-1.05,1.01,0
+164,Training,10,Alive,GCB,Low,1.64,-1.54,0.29,0.04,0.43,-0.14
+166,Training,0.3,Dead,ABC,Medium,-1.01,-1.63,0.44,0.89,-2.94,2
+172,Training,1.3,Dead,GCB,Low,0.66,1.06,-0.17,0.04,-0.56,-0.31
+173,Training,5.5,Alive,GCB,Medium,1.14,0.45,-0.34,-0.21,0.37,-0.71
+176,Training,3.4,Alive,GCB,Low,1.31,2.78,-0.4,-0.68,0.09,-1.41
+177,Training,6.9,Dead,GCB,Low,-0.77,0.9,-0.17,0.29,1.3,-0.35
+178,Training,1.9,Dead,GCB,Medium,0.47,1.69,-0.78,0.29,0.64,-0.85
+179,Training,0.3,Dead,GCB,Medium,0.18,-0.66,0.09,-0.58,-2.2,0.64
+180,Training,10.5,Alive,ABC,Low,-1.18,0.42,0.67,0.68,-0.26,0.69
+184,Training,0.4,Dead,Type III,Medium,-0.65,-0.44,-0.14,0.41,0.65,0.19
+189,Training,0.3,Dead,ABC,High,-0.74,-0.83,-0.01,1.23,1.07,0.47
+191,Training,2.6,Dead,ABC,Medium,-1.13,-0.29,1.17,0.08,0.42,0.58
+194,Training,0.3,Dead,GCB,Medium,-0.45,0.62,-0.14,-0.05,-0.47,0.07
+195,Training,1.3,Dead,Type III,High,-2.61,-0.95,-1.02,-1.75,-0.1,0.23
+197,Training,1.5,Dead,GCB,High,1.66,-0.74,0.13,1.79,1.31,-0.12
+198,Training,0.5,Dead,ABC,Medium,-0.99,-1.48,-0.29,0.32,1.05,0.36
+200,Training,2.4,Dead,ABC,Medium,-0.08,-0.5,0.5,0.1,-0.07,0.32
+202,Training,0.9,Dead,GCB,Low,-0.13,-0.42,0.1,-0.45,-0.37,0.14
+204,Training,2.8,Dead,GCB,Medium,1.35,-0.2,-0.04,-0.16,-0.63,-0.2
+205,Training,0.1,Dead,ABC,High,0.31,-0.56,0.4,1.07,0.48,0.33
+207,Training,2.3,Alive,ABC,High,-1.16,-1.97,1.19,-0.3,0.21,0.95
+208,Training,0,Dead,ABC,NA,-0.78,-1.07,0.75,0.72,0.83,0.64
+212,Training,0.2,Dead,ABC,NA,-0.41,-2.48,1.37,0.68,-1.38,1.71
+213,Training,12.2,Alive,Type III,Low,-0.02,1.59,-0.86,-0.32,0.58,-0.88
+219,Training,3.3,Alive,GCB,Medium,1.02,1.05,-0.85,-0.74,0.86,-1.26
+227,Training,6.8,Dead,ABC,NA,-1.22,-0.58,0,-0.61,0.38,0.19
+228,Training,2.5,Alive,Type III,Medium,0.02,1.25,-0.96,-0.04,0.25,-0.64
+229,Training,1.4,Dead,GCB,Low,1.43,0.95,0.77,-1.62,-0.04,-0.96
+230,Training,1,Dead,ABC,Low,-0.18,-0.65,-0.14,1.68,0.25,0.62
+231,Training,7.6,Alive,ABC,Low,-1.28,0.69,0.03,-1.28,-0.46,-0.05
+233,Training,1.6,Dead,GCB,Medium,0.04,-1.06,1.05,-1.41,-0.58,0.25
+237,Training,9.2,Alive,Type III,Low,-0.98,1.42,-0.88,-0.82,-0.36,-0.43
+241,Training,4.2,Alive,GCB,Medium,0.06,1.75,-0.9,0.39,0.66,-0.76
+244,Training,1.1,Dead,ABC,Medium,-0.27,-0.28,-0.03,1.4,-0.13,0.61
+247,Training,5.9,Alive,Type III,Low,-0.75,0.12,-0.72,-1.12,0.48,-0.48
+255,Training,0.7,Dead,GCB,Low,1.43,1.03,0.1,0.7,-1.07,-0.1
+263,Training,0.7,Dead,GCB,Medium,0.55,-1.57,0.75,0.07,-1.18,0.8
+267,Training,3.9,Alive,GCB,Medium,1.07,-0.84,-1.06,-1.06,0.39,-0.81
+275,Training,0.3,Dead,ABC,Medium,-1.53,-0.75,0,2.3,1.36,0.92
+277,Training,2.8,Alive,Type III,Low,-1.07,-0.89,-0.39,-1.02,-2.08,0.77
+279,Training,13.3,Alive,GCB,Medium,1.23,0.98,-0.75,0.14,0.27,-0.82
+281,Training,8.4,Alive,ABC,Low,-1.18,0.86,-0.1,-0.13,-1.15,0.42
+285,Training,1,Dead,GCB,Medium,-0.51,-1.33,-0.76,0.97,-2.03,1.23
+286,Training,10.3,Alive,GCB,Medium,0.07,-0.49,-0.9,-0.29,-0.31,-0.11
+294,Training,5.6,Alive,GCB,Medium,1.53,0.15,-0.37,0.76,0.26,-0.42
+297,Training,13.8,Alive,Type III,Low,0.59,1.18,0.5,0.16,1.01,-0.61
+298,Training,16.8,Alive,GCB,Medium,-0.18,0.95,-0.58,0.77,-1.27,0.31
+300,Training,0.9,Dead,Type III,High,-1.71,-1.09,-1.22,0.07,-0.26,0.58
+301,Training,5.6,Dead,Type III,Medium,-0.36,0.36,-1.29,-0.56,-1.21,-0.09
+305,Training,0.8,Alive,ABC,Medium,-0.42,-0.93,0.38,-1.05,0.09,0.1
+306,Training,2.7,Alive,GCB,NA,-1.1,1.26,1.09,0.07,0.87,0.02
+307,Training,2.8,Alive,GCB,Low,-0.39,1.77,0.09,-0.9,1,-0.9
+308,Training,1,Alive,GCB,Low,-1.34,1.17,0.41,-0.43,0.61,-0.13
+311,Training,4.8,Alive,Type III,Low,-0.38,1.53,-0.35,0.03,-0.1,-0.31
+312,Training,6.7,Alive,GCB,Low,1.55,-0.69,0.57,0.04,-0.12,-0.09
+313,Training,0.2,Dead,ABC,Medium,-0.79,-2.65,2.18,-1.35,-0.7,1.21
+315,Training,9.1,Alive,GCB,Medium,1.52,-0.78,-0.33,-0.08,1.05,-0.68
+316,Training,0.7,Dead,ABC,Medium,-0.45,-0.91,1.26,-0.81,-0.43,0.54
+317,Training,0.3,Dead,Type III,Medium,-2.3,-0.11,-0.08,-0.29,1.01,0.27
+318,Training,0.3,Dead,ABC,Medium,-1.47,-1.05,-0.87,0.49,1.09,0.29
+320,Training,6.7,Alive,GCB,Low,-0.32,-0.31,-0.24,1.18,1.43,0.03
+321,Training,5.8,Alive,GCB,Low,1.83,0.93,-0.17,-1.01,1.89,-1.7
+322,Training,7.1,Alive,GCB,Medium,0.07,1.56,-0.79,-0.15,-1.27,-0.25
+323,Training,2.3,Dead,GCB,High,0.56,2.47,-0.5,0.58,0.55,-0.89
+324,Training,6.5,Alive,GCB,Medium,1.14,0.1,0.19,0.34,1.05,-0.53
+325,Training,9.7,Alive,GCB,Low,1.24,0.22,0.25,-1.49,-0.21,-0.75
+391,Training,0,Dead,Type III,High,-1.1,0.72,-0.79,0.73,0.52,0.01
+394,Training,14.6,Alive,GCB,Medium,1.66,-0.69,-0.33,-0.88,1.36,-1.08
+398,Training,2.9,Dead,GCB,NA,2.13,0.98,-0.01,-0.76,0.39,-1.22
+401,Training,6.6,Dead,ABC,Medium,-0.41,1.49,0.11,-0.29,-0.51,-0.16
+404,Training,2.3,Dead,ABC,Medium,-0.91,-0.05,0.82,1.38,0.16,0.85
+406,Training,11.6,Alive,GCB,Low,0.4,2.98,-1.56,0.58,-0.45,-0.91
+407,Training,0.2,Dead,GCB,Medium,0.41,-2.19,0.27,1.12,-0.03,0.85
+408,Training,0.7,Dead,ABC,Medium,-1.24,0.21,0.19,-1.08,0.51,-0.14
+409,Training,2.1,Dead,GCB,Medium,1.08,1.18,0.1,-0.11,0.99,-0.92
+413,Training,2.3,Dead,ABC,Medium,-1.53,0.21,0.49,1.62,0.48,0.86
+415,Training,2.3,Dead,ABC,Medium,-1.26,0.72,-0.85,0.05,0.22,-0.07
+419,Training,1.3,Dead,Type III,High,-1.33,0.5,-0.37,-0.12,0.56,-0.04
+421,Training,0.1,Dead,GCB,High,1.79,-1.23,-0.07,-1.02,0.68,-0.76
+422,Training,0.5,Dead,Type III,NA,-1.55,1.95,0.06,-0.9,-0.85,-0.04
+423,Training,1,Dead,GCB,High,0.63,0.23,-0.29,-0.71,-1.94,0.07
+424,Training,12.3,Alive,ABC,Low,0.76,2.35,0.46,0.23,-0.16,-0.57
+425,Training,7.8,Alive,ABC,Medium,-0.26,-1.24,0.61,0.26,0.67,0.4
+427,Training,2.1,Dead,GCB,Medium,0.53,0.18,-0.23,0.23,-0.27,-0.1
+428,Training,0.4,Dead,GCB,Medium,0.78,0.17,0.05,0.34,0.5,-0.31
+429,Training,2,Dead,ABC,High,-0.48,1.96,0.43,2.08,-0.15,0.45
+430,Training,6.5,Alive,GCB,High,0.91,-0.17,-0.05,-1.09,1.23,-0.96
+431,Training,1,Dead,ABC,Medium,-1.19,-0.82,1.02,0.8,0.02,1.04
+432,Training,7.3,Alive,GCB,Low,0.62,1.54,-0.4,-0.44,-0.05,-0.78
+433,Training,6,Dead,GCB,Medium,1.31,1.91,0.55,0.07,0.61,-0.89
+1,Validation,11,Dead,Type III,Medium,-0.35,0.5,-0.22,-1.29,-0.56,-0.3
+3,Validation,10.6,Dead,GCB,High,1.02,1.15,-0.31,-0.14,-0.05,-0.68
+5,Validation,1,Dead,ABC,Medium,-0.26,-1.72,0.59,0.79,-0.04,0.9
+9,Validation,5.4,Dead,GCB,Medium,2.15,0.32,-0.05,-0.76,-0.66,-0.75
+13,Validation,0.8,Dead,Type III,Medium,1.51,0.91,-0.04,-0.6,1.48,-1.32
+14,Validation,10.5,Alive,GCB,Low,2.24,0.43,0.23,-0.22,1.35,-1.19
+16,Validation,9.6,Alive,GCB,High,0.39,1.44,-0.41,0.52,-0.7,-0.2
+17,Validation,9,Alive,ABC,High,0.52,-0.16,0.71,-0.53,0.35,-0.21
+19,Validation,7.4,Alive,GCB,Low,-0.41,-1.59,0.51,-0.38,-2.41,1.27
+32,Validation,7.5,Dead,ABC,Low,-1.51,-1,0.16,-1.11,1.38,-0.05
+35,Validation,11.3,Alive,GCB,Low,1.08,0.04,0.42,-1.28,-0.05,-0.61
+38,Validation,2,Dead,Type III,Low,-1.09,-0.34,-1.38,0.89,-1.27,0.74
+40,Validation,0.4,Dead,ABC,Medium,-0.7,-0.48,0.1,0.5,-0.83,0.76
+43,Validation,11.4,Alive,ABC,Medium,0.04,-0.42,1.02,-0.18,-1.12,0.63
+54,Validation,3,Dead,GCB,NA,-0.29,1.23,0.4,0.63,1.13,-0.29
+57,Validation,8.4,Alive,GCB,Medium,0.84,-0.07,0.01,-0.09,1.39,-0.69
+58,Validation,0.2,Dead,ABC,Low,-1.95,-0.58,0.32,0.1,-1.45,1.27
+63,Validation,5,Alive,GCB,Low,0.74,0.94,-0.54,-0.4,-0.34,-0.59
+64,Validation,0.9,Dead,ABC,Medium,-0.92,-2.56,1.13,0.29,-1.45,1.71
+78,Validation,0.6,Dead,ABC,Low,-0.57,-1.16,1.07,1.48,1.04,0.85
+79,Validation,0.6,Dead,GCB,Medium,0.54,-0.98,-0.61,-0.58,0.39,-0.36
+80,Validation,6.4,Alive,ABC,Low,-0.75,0.44,0.93,-0.82,-1.25,0.47
+86,Validation,4.8,Alive,ABC,Low,0.85,0.99,1.15,0.19,0.72,-0.38
+88,Validation,5,Dead,GCB,Medium,2.05,-2.24,0.63,0.13,0.78,-0.09
+89,Validation,0.3,Dead,ABC,High,-0.91,1.3,0.74,0.68,0.08,0.31
+94,Validation,9.5,Alive,Type III,NA,-1.58,0.71,-0.9,0.01,0.97,-0.24
+95,Validation,4.1,Alive,GCB,Low,0.73,0.71,-0.08,-0.02,1.45,-0.86
+97,Validation,8.9,Alive,GCB,Low,1.42,-0.39,-0.46,-1.42,-0.29,-0.78
+102,Validation,1.5,Dead,Type III,Medium,-1.32,0.12,-0.9,-0.45,0.19,-0.06
+103,Validation,1.1,Dead,GCB,Medium,0.47,-1.89,1.8,0.25,-1.05,1.17
+105,Validation,3.9,Alive,GCB,Low,0.63,1.77,-0.86,-0.41,0.13,-1
+107,Validation,0.1,Dead,ABC,Medium,-0.27,-0.14,1.15,1.54,-0.34,0.97
+112,Validation,1.3,Dead,GCB,Medium,1.61,1.03,-1.03,0.98,0.23,-0.74
+114,Validation,15.4,Alive,GCB,missing,1.26,-0.27,0.19,-0.05,1.32,-0.68
+127,Validation,9.1,Dead,GCB,Low,2.48,0.06,-0.18,-0.82,1.25,-1.42
+137,Validation,4.3,Dead,GCB,Medium,2.3,0.17,-0.61,0.67,0.33,-0.75
+139,Validation,0.1,Dead,Type III,Medium,-0.65,-0.81,-0.32,-0.95,-1.65,0.53
+141,Validation,3.6,Dead,Type III,Low,-1.08,0.79,-0.36,-0.71,-0.36,-0.08
+142,Validation,0.4,Dead,GCB,Medium,-0.8,-0.94,0.44,-0.2,-1.7,1.04
+145,Validation,10.2,Alive,GCB,Low,1.24,0.06,1.07,1.27,0.71,0.06
+146,Validation,10.4,Alive,GCB,Low,1.4,-0.5,0.07,0.62,0.77,-0.31
+163,Validation,0.7,Dead,GCB,High,-0.46,1.15,-0.04,0.86,0.36,-0.01
+165,Validation,0,Dead,ABC,High,-0.59,-0.78,0.14,0.16,0.94,0.16
+169,Validation,0.7,Dead,Type III,Low,0.56,1.72,-0.47,0.21,-0.47,-0.49
+181,Validation,0.1,Dead,GCB,Medium,1.58,1.71,0.48,-0.66,-0.58,-0.8
+182,Validation,4.1,Alive,ABC,Medium,0.01,-0.68,0.67,-0.56,-1.24,0.54
+183,Validation,3.5,Alive,GCB,Low,0.51,0.65,-0.88,0.31,-0.46,-0.28
+185,Validation,0.5,Dead,ABC,Medium,-1.08,0.03,0,1.57,-0.53,0.96
+186,Validation,11.7,Alive,GCB,Medium,0.42,1.6,-0.05,-0.29,1.05,-0.95
+190,Validation,6.1,Dead,ABC,Low,-0.44,1.49,0.18,0.59,1.36,-0.44
+199,Validation,1.1,Dead,GCB,Medium,-0.28,-1.17,0.71,0.37,1.02,0.34
+203,Validation,1.9,Dead,ABC,Medium,-0.87,-0.94,0.98,-0.72,-1.92,1.1
+211,Validation,9.5,Alive,GCB,NA,1.45,-0.47,0.13,0.06,0.8,-0.5
+216,Validation,0.4,Dead,ABC,Medium,-0.73,0.32,0.98,1.05,-0.57,0.88
+221,Validation,1.3,Dead,ABC,High,-0.93,-1.23,0.35,-0.52,-0.59,0.68
+222,Validation,1.1,Dead,Type III,Medium,-1.05,2.02,-0.27,0.34,1.3,-0.56
+223,Validation,0.7,Dead,GCB,High,0.13,-1.15,-0.13,-0.22,0.75,-0.08
+224,Validation,1.6,Dead,Type III,Low,-1.63,-0.08,-0.03,-1.23,0.13,0.06
+234,Validation,3.4,Alive,Type III,Low,-0.69,0.11,-1.12,-1.41,-0.86,-0.27
+238,Validation,9.2,Alive,Type III,Low,-1.91,-1.33,-0.85,0.19,0.59,0.56
+245,Validation,1.2,Dead,Type III,Low,-0.32,0.18,-0.95,-1.1,0.53,-0.69
+248,Validation,11.2,Alive,GCB,Medium,0.58,0.25,-0.86,-0.49,-0.22,-0.52
+249,Validation,1.4,Dead,GCB,High,-0.27,0.09,0.35,1.11,0.78,0.24
+252,Validation,8.8,Alive,GCB,Low,1.25,-0.13,-1.12,-0.47,0.33,-0.85
+262,Validation,3,Dead,GCB,Medium,0.26,-0.68,-0.85,-1.87,-0.51,-0.53
+266,Validation,0.4,Dead,GCB,NA,1.68,0.07,-0.32,0.05,-0.25,-0.49
+272,Validation,2.9,Dead,ABC,Low,-0.75,-0.96,-0.2,-0.85,-1.58,0.64
+284,Validation,0.4,Dead,Type III,Medium,-1.32,-1.15,-0.72,-0.88,-1.12,0.57
+299,Validation,17.4,Alive,Type III,Medium,-0.52,-0.09,-1.08,0.87,0.04,0.17
+303,Validation,16.8,Alive,Type III,NA,-0.73,-0.22,-0.25,0.6,1.37,-0.03
+304,Validation,1.3,Dead,ABC,Medium,-1.1,-0.59,0.69,0.68,1.29,0.44
+309,Validation,4,Alive,Type III,NA,-1.41,0.44,-1.7,0.94,-0.96,0.48
+396,Validation,5.6,Dead,Type III,Medium,-1.81,0.71,0.83,-0.59,-0.88,0.64
+397,Validation,19.8,Alive,GCB,Medium,1.09,-0.08,0.16,-0.38,-0.63,-0.18
+399,Validation,6.9,Dead,GCB,Medium,1.47,-0.99,-0.33,-1.39,0.88,-0.97
+400,Validation,0.3,Dead,ABC,Medium,-1.28,-1.6,0.87,0.3,0.99,0.76
+411,Validation,3.1,Dead,Type III,Medium,-0.85,-0.71,-0.5,2.51,0.89,0.8
+418,Validation,7.7,Alive,Type III,Medium,-1.12,1.89,-0.23,0.27,0.24,-0.19
+435,Validation,2.7,Dead,GCB,Low,-0.36,0.5,-0.27,1.21,-0.71,0.51
+439,Validation,1.1,Dead,Type III,High,-0.69,1.02,-0.23,-0.84,0.05,-0.39
