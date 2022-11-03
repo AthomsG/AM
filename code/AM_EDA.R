@@ -11,8 +11,8 @@ library(readr)
 library(stringr)
 library(ggplot2)
 
-patients <- read_csv("/Users/bernardo/Desktop/MMAC/3sem/AM/Project/patients.csv")
-microarray <- read_csv("/Users/bernardo/Desktop/MMAC/3sem/AM/Project/microarray.csv")
+patients <- read_csv("patients.csv")
+microarray <- read_csv("microarray.csv")
 
 #Replacing spaces and dashes by underscores
 colnames(patients) <- str_replace_all(colnames(patients), " ", "_")
@@ -31,6 +31,15 @@ for (i in 3:276){
   colnames(microarray_LYM)[i] = substring(current_name, first_pos_of_LYM+3, first_pos_of_LYM+5)
 }
 
+#merging of the two tables (each row of the table micro_array table corresponds to a sample
+#in order to merge it, it is necessary to transpose the table. The name of each variable is the
+#concatenation of the first two rows of the table)
+microarray_LYM$concatenated <- paste(microarray_LYM$UNIQID, "-", microarray_LYM$NAME) #creating the column corresponding to the name of each variable of the sample
+microarray_LYM_transposed <- data.frame(t(microarray_LYM[ , 3:(ncol(microarray_LYM)-1)])) #transposing of the table in order to have 293 observations with 7293 variables
+colnames(microarray_LYM_transposed) <- microarray_LYM$concatenated #definition of the name of each variable
+microarray_LYM_transposed$`DLBCL_sample_(LYM_number)` <- rownames(microarray_LYM_transposed)#definition of each patients Lym_number as a variable to be later used on the merging
+
+final_merged_table = merge(patients, microarray_LYM_transposed, by = "DLBCL_sample_(LYM_number)") #inner join of the patients and the microarray tables
 
 #Distribution of Predicted Outcome by Group of Lymphoma
 ggplot(patients, aes(Outcome_predictor_score, colour = Subgroup)) +
