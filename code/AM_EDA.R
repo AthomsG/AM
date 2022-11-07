@@ -52,6 +52,44 @@ c <- ggplot(patients, aes(x=Outcome_predictor_score, fill=Status_at_follow_up, c
   geom_histogram(binwidth = 0.1) + labs(title="-")
 c + theme_bw()
 
+#Distribution of Predicted Outcome by Group of Lymphoma
+ggplot(patients, aes(Outcome_predictor_score, colour = Subgroup)) +
+  geom_freqpoly(binwidth = 1) + labs(title="-")
+
+ggplot(patients, aes(Outcome_predictor_score, colour = Status_at_follow_up)) +
+  geom_freqpoly(binwidth = 1) + labs(title="-")
+
+ggplot(patients, aes(Outcome_predictor_score, colour = IPI_Group)) +
+  geom_freqpoly(binwidth = 1) + labs(title="-")
+
+c <- ggplot(patients, aes(x=Outcome_predictor_score, fill=Status_at_follow_up, color=Status_at_follow_up)) +
+  geom_histogram(binwidth = 0.1) + labs(title="-")
+c + theme_bw()
+
+#colnames(patients)
+
+#report
+library(DataExplorer)  #tabela de correlacao etc
+create_report(patients)
+
+par(mfrow=c(2,2))
+#boxplots
+boxplot(patients$Outcome_predictor_score ~patients$Status_at_follow_up,
+        data=patients,
+        col="floralwhite",
+        border="sienna"
+)
+boxplot(patients$Outcome_predictor_score ~patients$Subgroup,
+        data=patients,
+        col="floralwhite",
+        border="sienna"
+)
+boxplot(patients$Outcome_predictor_score ~patients$IPI_Group,
+        data=patients,
+        col="floralwhite",
+        border="sienna"
+)
+
 
 
 
