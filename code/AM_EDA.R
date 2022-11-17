@@ -42,12 +42,23 @@ microarray_LYM_transposed$`DLBCL_sample_(LYM_number)` <- rownames(microarray_LYM
 final_merged_table = merge(patients, microarray_LYM_transposed, by = "DLBCL_sample_(LYM_number)") #inner join of the patients and the microarray tables
 
 #Distribution of Predicted Outcome by Group of Lymphoma
-ggplot(patients, aes(Outcome_predictor_score, colour = Subgroup)) +
+#ggplot(patients, aes(Outcome_predictor_score, colour = Subgroup)) +
        geom_freqpoly(binwidth = 1) + labs(title="-")
 
-ggplot(patients, aes(Outcome_predictor_score, colour = Status_at_follow_up)) +
+#ggplot(patients, aes(Outcome_predictor_score, colour = Status_at_follow_up)) +
   geom_freqpoly(binwidth = 1) + labs(title="-")
 
+#histograms
+ggplot(patients, aes(Outcome_predictor_score)) +
+  geom_histogram(binwidth = 0.1) + labs(title="-")
+
+a <- ggplot(patients, aes(x=Outcome_predictor_score, fill=IPI_Group, color=IPI_Group)) +
+  geom_histogram(binwidth = 0.1) + labs(title="-")
+a + theme_bw()
+
+b <- ggplot(patients, aes(x=Outcome_predictor_score, fill=Subgroup, color=Subgroup)) +
+  geom_histogram(binwidth = 0.1) + labs(title="-")
+b + theme_bw()
 c <- ggplot(patients, aes(x=Outcome_predictor_score, fill=Status_at_follow_up, color=Status_at_follow_up)) +
   geom_histogram(binwidth = 0.1) + labs(title="-")
 c + theme_bw()
@@ -62,9 +73,7 @@ ggplot(patients, aes(Outcome_predictor_score, colour = Status_at_follow_up)) +
 ggplot(patients, aes(Outcome_predictor_score, colour = IPI_Group)) +
   geom_freqpoly(binwidth = 1) + labs(title="-")
 
-c <- ggplot(patients, aes(x=Outcome_predictor_score, fill=Status_at_follow_up, color=Status_at_follow_up)) +
-  geom_histogram(binwidth = 0.1) + labs(title="-")
-c + theme_bw()
+
 
 #colnames(patients)
 
@@ -74,22 +83,25 @@ create_report(patients)
 
 par(mfrow=c(2,2))
 #boxplots
-boxplot(patients$Outcome_predictor_score ~patients$Status_at_follow_up,
-        data=patients,
-        col="floralwhite",
-        border="sienna"
-)
-boxplot(patients$Outcome_predictor_score ~patients$Subgroup,
-        data=patients,
-        col="floralwhite",
-        border="sienna"
-)
-boxplot(patients$Outcome_predictor_score ~patients$IPI_Group,
-        data=patients,
+boxplot(Outcome_predictor_score ~Status_at_follow_up,
+        data=final_merged_table,
         col="floralwhite",
         border="sienna"
 )
 
+boxplot(Outcome_predictor_score ~Subgroup,
+        data=final_merged_table,
+        col="floralwhite",
+        border="sienna"
+)
+boxplot(Outcome_predictor_score~IPI_Group,
+        data=final_merged_table,
+        col="floralwhite",
+        border="sienna"
+)
 
-
-
+# Kolmogorov-Smirnov normality test (since n>=50)
+#nrow(patients)
+My_list <- split(patients, f = list(colnames(patients)))
+loop_Shapiro2 <- lapply(My_list, function(x) ks.test(x$Outcome_predictor_score, "pnorm"))
+print(loop_Shapiro2)
