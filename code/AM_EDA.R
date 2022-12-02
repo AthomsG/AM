@@ -10,14 +10,16 @@
 library(readr)
 library(stringr)
 library(ggplot2)
+library(dplyr)
 
 patients <- read_csv("patients.csv")
 microarray <- read_csv("microarray.csv")
 
+
 #Replacing spaces and dashes by underscores
 colnames(patients) <- str_replace_all(colnames(patients), " ", "_")
 colnames(patients) <- str_replace_all(colnames(patients), "-", "_")
-
+colnames(patients)
 #We can link these two data sets by comparing the DLBCL sample (LYM number) in the “patients” 
 #with the LYM number in column names of the “microarray” data.
 
@@ -41,16 +43,69 @@ microarray_LYM_transposed$`DLBCL_sample_(LYM_number)` <- rownames(microarray_LYM
 
 final_merged_table = merge(patients, microarray_LYM_transposed, by = "DLBCL_sample_(LYM_number)") #inner join of the patients and the microarray tables
 
+#missing values
+sum(is.na(final_merged_table))
 #Distribution of Predicted Outcome by Group of Lymphoma
 #ggplot(patients, aes(Outcome_predictor_score, colour = Subgroup)) +
        geom_freqpoly(binwidth = 1) + labs(title="-")
 
-#ggplot(patients, aes(Outcome_predictor_score, colour = Status_at_follow_up)) +
-  geom_freqpoly(binwidth = 1) + labs(title="-")
 
-#histograms
-ggplot(patients, aes(Outcome_predictor_score)) +
-  geom_histogram(binwidth = 0.1) + labs(title="-")
+###########################################EDA#########################
+#bar charts for categorical
+
+ggplot(patients, aes(x=Analysis_Set))+geom_bar(fill='lightskyblue4')+labs(x='Analysis set')
+ggplot(patients, aes(x=`Status_at_follow-up`))+geom_bar(fill='lightskyblue4')+labs(x='Status at follow-up')
+ggplot(patients, aes(x=patients$Subgroup))+geom_bar(fill='lightskyblue4')+labs(x='Subgroup')
+ggplot(patients, aes(x=patients$IPI_Group))+geom_bar(fill='lightskyblue4')+labs(x='IPI group')
+
+require(gridExtra)
+grid.arrange(ggplot(patients, aes(x=Analysis_Set))+geom_bar(fill='lightskyblue4')+labs(x='Analysis set'),
+             ggplot(patients, aes(x=`Status_at_follow-up`))+geom_bar(fill='lightskyblue4')+labs(x='Status at follow-up'),
+             ggplot(patients, aes(x=patients$Subgroup))+geom_bar(fill='lightskyblue4')+labs(x='Subgroup'),
+             ggplot(patients, aes(x=patients$IPI_Group))+geom_bar(fill='lightskyblue4')+labs(x='IPI group'), ncol=2)
+
+
+
+#ggplot outcome predictor com density 
+ggplot(patients, aes(x=Outcome_predictor_score)) + 
+  geom_histogram(aes(y=..density..), colour="black", fill="blue")+
+  geom_density(alpha=.5, colour="red")
+
+#histograms for continuous independent variables
+
+ggplot(patients, aes(x=patients$`Follow-up_(years)`))  +labs(x='Follow-up(years)')+
+  geom_histogram(aes(y=..density..), colour="black", fill="grey")
+
+ggplot(patients, aes(x=patients$Germinal_center_B_cell_signature)) + 
+  geom_histogram(aes(y=..density..), colour="black", fill="grey")
+
+ggplot(patients, aes(x=patients$Lymph_node_signature)) + 
+  geom_histogram(aes(y=..density..), colour="black", fill="grey")
+
+ggplot(patients, aes(x=patients$Proliferation_signature)) + 
+  geom_histogram(aes(y=..density..), colour="black", fill="grey")
+
+ggplot(patients, aes(x=patients$BMP6)) + 
+  geom_histogram(aes(y=..density..), colour="black", fill="grey")
+
+ggplot(patients, aes(x=patients$MHC_class_II_signature)) + 
+  geom_histogram(aes(y=..density..), colour="black", fill="grey")
+
+require(gridExtra)
+grid.arrange(ggplot(patients, aes(x=patients$`Follow-up_(years)`)) + labs(x='Follow-up(years)')+
+               geom_histogram(aes(y=..density..), colour="black", fill="grey"),
+             ggplot(patients, aes(x=patients$Germinal_center_B_cell_signature)) +labs(x='Germinal center B cell signature')+
+               geom_histogram(aes(y=..density..), colour="black", fill="grey"),
+             ggplot(patients, aes(x=patients$Lymph_node_signature)) + labs(x='Lymph node signature')+
+               geom_histogram(aes(y=..density..), colour="black", fill="grey"),
+             ggplot(patients, aes(x=patients$Proliferation_signature)) + labs(x='Proliferation signature')+
+               geom_histogram(aes(y=..density..), colour="black", fill="grey"),
+             ggplot(patients, aes(x=patients$BMP6)) + labs(x='BMP6')+labs(x='BMP6')+
+               geom_histogram(aes(y=..density..), colour="black", fill="grey"),
+             ggplot(patients, aes(x=patients$MHC_class_II_signature)) + labs(x='MHC class II signature')+
+               geom_histogram(aes(y=..density..), colour="black", fill="grey"))
+
+#ggplots em relacao com a target - categoricas
 
 a <- ggplot(patients, aes(x=Outcome_predictor_score, fill=IPI_Group, color=IPI_Group)) +
   geom_histogram(binwidth = 0.1) + labs(title="-")
@@ -63,19 +118,20 @@ c <- ggplot(patients, aes(x=Outcome_predictor_score, fill=Status_at_follow_up, c
   geom_histogram(binwidth = 0.1) + labs(title="-")
 c + theme_bw()
 
-#Distribution of Predicted Outcome by Group of Lymphoma
-ggplot(patients, aes(Outcome_predictor_score, colour = Subgroup)) +
-  geom_freqpoly(binwidth = 1) + labs(title="-")
+#ggplots em relacao com a target - numericas
 
-ggplot(patients, aes(Outcome_predictor_score, colour = Status_at_follow_up)) +
-  geom_freqpoly(binwidth = 1) + labs(title="-")
-
-ggplot(patients, aes(Outcome_predictor_score, colour = IPI_Group)) +
-  geom_freqpoly(binwidth = 1) + labs(title="-")
-
-
+ggplot(patients,x=aes(BMP6, color=patients$Outcome_predictor_score))
 
 #colnames(patients)
+patients[, c('Analysis_Set')] <- list(NULL)
+patients
+
+#correlation chart
+library(PerformanceAnalytics)
+chart.Correlation(patients[,c(3,7,8,9,10,11,12)], histogram=TRUE, pch=19)
+
+data.cpca <- prcomp(patients[,1:9], scale. = FALSE, retx=TRUE)
+print(data.cpca)
 
 #report
 library(DataExplorer)  #tabela de correlacao etc
@@ -83,7 +139,7 @@ create_report(patients)
 
 par(mfrow=c(2,2))
 #boxplots
-boxplot(Outcome_predictor_score ~Status_at_follow_up,
+boxplot(Outcome_predictor_score~Status_at_follow_up,
         data=final_merged_table,
         col="floralwhite",
         border="sienna"
@@ -105,3 +161,27 @@ boxplot(Outcome_predictor_score~IPI_Group,
 My_list <- split(patients, f = list(colnames(patients)))
 loop_Shapiro2 <- lapply(My_list, function(x) ks.test(x$Outcome_predictor_score, "pnorm"))
 print(loop_Shapiro2)
+
+final_merged_table
+
+#pca
+results <- prcomp(final_merged_table, scale = TRUE)
+
+#reverse the signs
+results$rotation <- -1*results$rotation
+
+#display principal components
+results$rotation
+
+
+final_merged_table[, c("Subgroup",'Analysis_Set','Status_at_follow_up',"IPI_Group")] <- list(NULL)
+final_merged_table
+str(final_merged_table)
+str(final_merged_table)
+cor(final_merged_table)
+
+library(tibble)
+library(tidyr)
+
+
+
