@@ -1,13 +1,17 @@
 #library(Hmisc)
 #library(psych)
+
 {
-library(readr)
-library(stringr)
-library(ggplot2)
-library(dplyr)
-library(caret)
-library(tibble)
-library(tidyr)
+  library(readr)
+  library(stringr)
+  library(ggplot2)
+  library(dplyr)
+  library(caret)
+  library(tibble)
+  library(tidyr)
+  library(tseries)
+  library(rrcov)
+  
 }
 
 patients <- read_csv("patients.csv")
@@ -81,40 +85,59 @@ min(merged_data_v1[13:7303],na.rm = TRUE)
 
 #Eliminate features with more than 20% of NAs
 per_NA <- colMeans(is.na(merged_data_v1))
-merged_data_v2 <- merged_data_v1[-which(per_NA >= 0.2)]
+merged_data_v2 <- merged_data_v1[-which(per_NA >= 0.1)]
 
-#With this cut we end up with 5969 features
+#With this cut we end up with 4949 features
 
-#Hence, we eliminated 7303-5969=1334 gene features that had 20% of more of NAs
+#Hence, we eliminated 7303-4949=2354 gene features that had 10% of more of NAs
 sum(is.na(merged_data_v2))
-#Now we have 67268 NAs (we reduced (177352-67268)*100/177352 = 62.070% of NAs)
+#Now we have 32375 NAs (we reduced (177352-32375)*100/177352 = 81.75% of NAs)
 
-#Distribution of Predicted Outcome by Group of Lymphoma
-ggplot(patients, aes(Outcome_predictor_score, colour = Subgroup)) +
-       geom_freqpoly(binwidth = 1) + labs(title="-")
 
 #Removing highly correlated gene features
 #https://stats.stackexchange.com/questions/50537/should-one-remove-highly-correlated-variables-before-doing-pca
 {
-patients_features <- merged_data_v2[1:12]
-genes_features <- merged_data_v2[13:5954]
-#Creating matrix of correlations
-#aux = cor(genes_data, use = "pairwise.complete.obs")
-hc = findCorrelation(cor(genes_features, use = "pairwise.complete.obs"), cutoff=0.95) #Eliminate features with more than 0.95 correlation with others
-print(length(hc))
-hc = sort(hc)
-reduced_genes_features = genes_features[,-c(hc)]
-merged_data_v3 <- cbind(patients_features, reduced_genes_features)
-}
-#With this reduction of gene features, we end up with 5575 gene features, and 5587 features in total
+  patients_features <- merged_data_v2[1:12]
+  genes_features <- merged_data_v2[13:4949]
+  #Creating matrix of correlations
+  #aux = cor(genes_data, use = "pairwise.complete.obs")
+  hc = findCorrelation(cor(genes_features, use = "pairwise.complete.obs"), cutoff=0.95) #Eliminate features with more than 0.95 correlation with others
+  print(length(hc))
+  hc = sort(hc)
+  reduced_genes_features = genes_features[,-c(hc)]
+  merged_data_v3 <- cbind(patients_features, reduced_genes_features)
+  }
+#With this reduction of gene features, we end up with 4578 gene features, and 4590 features in total
 #Still a lot of features but we started with 7303!
 
 #Checking how many NAs at this point
 sum(is.na(merged_data_v3))
-#With this version we have 65943 NAs (37% of the initial amount)
+#With this version we have 31669 NAs (17.85% of the initial amount)
 
+
+
+#Replacing the Nas with their median value in collumn
+
+merged_data_v4 <- merged_data_v3 %>% mutate(across(where(is.numeric), ~replace_na(., median(., na.rm=TRUE))))
+
+sum(is.na(merged_data_v4))
+sum(is.na(patients_features))
+
+#We replaced every Na except for the IPI subgroup hence the is.numeric command
+
+genes_final = merged_data_v4[13:4590]
+
+sum(is.na(genes_final))
 
 ########################################### EDA #########################
+
+#Distribution of Predicted Outcome by Group of Lymphoma
+ggplot(patients, aes(Outcome_predictor_score, colour = Subgroup)) +
+  geom_freqpoly(binwidth = 1) + labs(title="-")
+
+
+
+
 #bar charts for categorical
 
 ggplot(patients, aes(x=Analysis_Set))+geom_bar(fill='lightskyblue4')+labs(x='Analysis set')
@@ -174,6 +197,8 @@ a <- ggplot(patients, aes(x=Outcome_predictor_score, fill=IPI_Group, color=IPI_G
   geom_histogram(binwidth = 0.1) + labs(title="-")
 a + theme_bw()
 
+
+
 b <- ggplot(patients, aes(x=Outcome_predictor_score, fill=Subgroup, color=Subgroup)) +
   geom_histogram(binwidth = 0.1) + labs(title="-")
 b + theme_bw()
@@ -183,7 +208,8 @@ c + theme_bw()
 
 #ggplots em relacao com a target - numericas
 
-ggplot(patients,x=aes(BMP6, color=patients$Outcome_predictor_score))
+ggplot(patients,x=aes(BMP6, color=patients$Outcome_predictor_score))4
+
 
 #colnames(patients)
 patients[, c('Analysis_Set')] <- list(NULL)
@@ -219,16 +245,129 @@ boxplot(Outcome_predictor_score~IPI_Group,
         border="sienna"
 )
 
-# Kolmogorov-Smirnov normality test (since n>=50)
-#nrow(patients)
+
+# Normality tests
+ 
+# Shapiro-Wilk normality test
+#if p < 0.05, we don't believe that our variables follow a normal distribution
+
+#First on a small scale first to make sure everything runs smoothly
+ 
+
+s<-shapiro.test(patients_features$Outcome_predictor_score)
+print(s$p.value)
+
+for (x in 7:12){
+  s<-shapiro.test(patients_features[,x])
+  print(s$p.value)
+}
+
+sum_s=0.0
+for (x in 7:12){
+  s<-shapiro.test(patients_features[,x])
+  if (s$p.value<0.05) {sum_s =sum_s+1}
+  }
+print(sum_s)
+
+
+sum_s = 0.0
+for (x in 1:4578){
+  s<-shapiro.test(genes_final[,x])
+  if (s$p.value<0.05){
+    sum_s =sum_s+1
+  }
+}
+print (sum_s)
+cat(round(sum_s/4578*100,2),"%")
+
+#We have then only 35.85% of variables which pass the Shapiro-Wilk normality  test
+
+
+sum_s = 0.0
+for (x in 1:4578){
+  s<-shapiro.test(genes_features[,x])
+  if (s$p.value<0.05){
+    sum_s =sum_s+1
+  }
+}
+print(sum_s)
+cat(round(sum_s/4578*100,2),"%")
+
+
+#If we were to check without setting NAs to the median values the percentage increases to 42.22% 
+
+
+
+# Jarque-Bera test
+
+j<-jarque.bera.test(patients_features$Outcome_predictor_score)
+print(j$p.value)
+
+for (x in 7:12){
+  j<-jarque.bera.test(patients_features[,x])
+  print(j$p.value)
+}
+
+sum_j = 0.0
+for (x in 7:12){
+  j<-jarque.bera.test(patients_features[,x])
+  if (j$p.value<0.05) {sum_j =sum_j+1}
+}
+print(sum_j)
+
+
+sum_j = 0.0
+for (x in 1:4578){
+  j<-jarque.bera.test(genes_final[,x])
+  if (j$p.value<0.05){
+    sum_j =sum_j +1
+  }
+}
+
+print(sum_j)
+cat(round(sum_j/4578*100,2),"%")
+
+#We now get 35.76% of variables which pass the Jarque-Bera normality test, only a difference of 4 features in total
+
+
+
+# Kolmogorov-Smirnov normality test 
+
+
 My_list <- split(patients, f = list(colnames(patients)))
 loop_Shapiro2 <- lapply(My_list, function(x) ks.test(x$Outcome_predictor_score, "pnorm"))
 print(loop_Shapiro2)
 
-merged_data_v3
+#we tried using this code for testing the normality of our features however we got very diferent results depending on how we chose the normal distributions to which we compare our features
+#We also got lots of warnings (over 50)
 
-#pca
-results <- prcomp(merged_data_v3, scale = TRUE)
+sum_k=0.0
+for (x in 1:4578){
+  k<-ks.test(genes_final[,x],"pnorm",mean=mean(genes_final[,x]),sd=sd(genes_final[,x]) )
+  if (k$p.value<0.05){
+    sum_k =sum_k+1
+  }
+}
+print(sum_k)
+cat(round(sum_k/4578*100,2),"%")
+
+sum_k=0.0
+for (x in 1:4578){
+  k<-ks.test(genes_final[,x],"pnorm" )
+  if (k$p.value<0.05){
+    sum_k =sum_k+1
+  }
+}
+print(sum_k)
+cat(round(sum_k/4578*100,2),"%")
+
+#It's also easy to see how the results difer from the results obtained above with other tests
+
+
+
+
+#PCA
+results <- prcomp(genes_final, scale = TRUE)
 
 #reverse the signs
 results$rotation <- -1*results$rotation
@@ -236,12 +375,27 @@ results$rotation <- -1*results$rotation
 #display principal components
 results$rotation
 
+summary (results)
 
-merged_data_v3[, c("Subgroup",'Analysis_Set','Status_at_follow_up',"IPI_Group")] <- list(NULL)
-merged_data_v3
-str(merged_data_v3)
-str(merged_data_v3)
-cor(merged_data_v3)
+#We need to retain 75 PCA's to explain 80% of the variability
+
+#PCA Robust
+
+pc.Grid<- PcaGrid(genes_final, scale=FALSE)
+summary(pc.Grid)
+
+#With PP-estimators for PCA using the grid search algorithm we need to retain 113 PCA's to explain 80% of the variability
+
+pc.Grid$eigenvalues
+
+pc.ROBPCA <- PcaHubert(genes_final,kmax=63, scale=FALSE)
+summary(pc.ROBPCA)
+
+#With ROBPCA we only need 63 PCA's to explain 80% of the variability
+
+pc.ROBPCA$eigenvalues
+pc.ROBPCA$loadings[,1]
+pc.ROBPCA$loadings[,2]
 
 
 
