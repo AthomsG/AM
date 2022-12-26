@@ -396,7 +396,7 @@ summary(pc.ROBPCA)
 pc.ROBPCA$eigenvalues
 pc.ROBPCA$loadings[,1]
 pc.ROBPCA$loadings[,2]
-
+View(pc.ROBPCA$scores)
 
 
 
