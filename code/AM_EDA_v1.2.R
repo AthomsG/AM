@@ -377,21 +377,22 @@ results$rotation
 
 summary (results)
 
-#We need to retain 75 PCA's to explain 80% of the variability
+#We need to retain 75 PC's to explain 80% of the variability
+#However PCA is not a method one should use in this context as p > n 
 
 #PCA Robust
 
 pc.Grid<- PcaGrid(genes_final, scale=FALSE)
 summary(pc.Grid)
 
-#With PP-estimators for PCA using the grid search algorithm we need to retain 113 PCA's to explain 80% of the variability
+#With PP-estimators for PCA using the grid search algorithm we need to retain 113 PC's to explain 80% of the variability
 
 pc.Grid$eigenvalues
 
 pc.ROBPCA <- PcaHubert(genes_final,kmax=63, scale=FALSE)
 summary(pc.ROBPCA)
 
-#With ROBPCA we only need 63 PCA's to explain 80% of the variability
+#With ROBPCA we only need 63 PC's to explain 80% of the variability
 
 pc.ROBPCA$eigenvalues
 pc.ROBPCA$loadings[,1]
