@@ -151,6 +151,32 @@ grid.arrange(ggplot(patients, aes(x=Analysis_Set))+geom_bar(fill='lightskyblue4'
              ggplot(patients, aes(x=patients$Subgroup))+geom_bar(fill='lightskyblue4')+labs(x='Subgroup'),
              ggplot(patients, aes(x=patients$IPI_Group))+geom_bar(fill='lightskyblue4')+labs(x='IPI group'), ncol=2)
 
+#stacked bar chart
+subset(merged_data_v4, IPI_Group %in% c("Medium", "Low", "High")) %>%  
+  group_by(Status_at_follow_up, IPI_Group) %>%  
+  summarize(Count = n()) %>% 
+  ggplot(aes(x=IPI_Group, y=Count, fill=Status_at_follow_up)) + 
+  geom_bar(stat='identity', position= "fill")+
+  scale_x_discrete(limits = c("Low", "Medium", "High"))+
+  scale_fill_manual(values = c("#b9e38d", "#eb8060"))
+
+
+quantile_predictor = quantile(merged_data_v4$Outcome_predictor_score, probs = c(1/3, 2/3))
+
+predictor_discretized = vector(,dim(merged_data_v4)[1]); #the same as "vec = vector(length = 10);"
+predictor_discretized[]="Medium"
+predictor_discretized[merged_data_v4$Outcome_predictor_score<=quantile_predictor[1]]="Low"
+predictor_discretized[merged_data_v4$Outcome_predictor_score>quantile_predictor[2]]="High"
+
+#stacked bar chart
+subset(cbind(merged_data_v4, predictor_discretized), predictor_discretized %in% c("Medium", "Low", "High")) %>%  
+  group_by(Status_at_follow_up, predictor_discretized) %>%  
+  summarize(Count = n()) %>% 
+  ggplot(aes(x=predictor_discretized, y=Count, fill=Status_at_follow_up)) + 
+  geom_bar(stat='identity', position= "fill")+
+  scale_x_discrete(limits = c("Low", "Medium", "High"))+
+  scale_fill_manual(values = c("#b9e38d", "#eb8060"))
+
 
 #ggplot outcome predictor com density 
 ggplot(patients, aes(x=Outcome_predictor_score)) + 
