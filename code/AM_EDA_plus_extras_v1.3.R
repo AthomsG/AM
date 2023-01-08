@@ -438,6 +438,77 @@ ggplot(genes_values, aes(x=genes_values$expressivity, y=..count.., fill=stat(cou
   geom_histogram(colour="black", bins=100)+
   xlim(0, 7)+theme(legend.position = "none")
 
+
+#-----------------------------------------------------------------------------------------------------
+#2.3 -  NORMALITY TESTS
+
+# Shapiro-Wilk normality test
+#if p < 0.05, we don't believe that our variables follow a normal distribution
+
+for (x in 7:12){
+  s<-shapiro.test(patients_features_v4[,x])
+  print(s$p.value)
+}
+# Lymph node signature, Proliferation signature and Outcome predictor score pass the test
+{
+  sum_s = 0.0
+  for (x in 1:4578){
+    s<-shapiro.test(genes_features_v4[,x])
+    if (s$p.value<0.05){
+      sum_s =sum_s+1}}
+  print (sum_s)
+  cat(round(sum_s/4578*100,2),"%")
+}
+# We have then only 35.85% of variables which pass the Shapiro-Wilk normality  test
+
+{
+  sum_s = 0.0
+  for (x in 1:4578){
+    s<-shapiro.test(genes_features_v3[,x])
+    if (s$p.value<0.05){
+      sum_s =sum_s+1}}
+  print(sum_s)
+  cat(round(sum_s/4578*100,2),"%")
+}
+# If we were to check without setting NAs to the median values the percentage increases to 41.94% 
+
+
+# Jarque-Bera test
+#if p < 0.05, we don't believe that our variables follow a normal distribution
+
+for (x in 7:12){
+  j<-jarque.bera.test(patients_features_v4[,x])
+  print(j$p.value)
+}
+# Again Lymph node signature, Proliferation signature and Outcome predictor score pass the test
+{
+  sum_j = 0.0
+  for (x in 1:4578){
+    j<-jarque.bera.test(genes_features_v4[,x])
+    if (j$p.value<0.05){
+      sum_j =sum_j +1}}
+  print(sum_j)
+  cat(round(sum_j/4578*100,2),"%")
+}
+#We now get 35.76% of variables which pass the Jarque-Bera normality test, only a difference of 4 features in total
+
+
+
+
+#-----------------------------------------------------------------------------------------------------
+#Part 3 - ROBUST PCA
+#-----------------------------------------------------------------------------------------------------
+
+pc.Grid<- PcaGrid(genes_features_v4, scale=FALSE)
+summary(pc.Grid)
+#With PP-estimators for PCA using the grid search algorithm we need to retain 113 PCA's to explain 80% of the variability
+
+
+pc.ROBPCA <- PcaHubert(genes_features_v4,kmax=63, scale=FALSE)
+summary(pc.ROBPCA)
+#With ROBPCA we only need 63 PCA's to explain 80% of the variability
+
+
 #CLUSTERING
 
 df <- genes_features_v4
