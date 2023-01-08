@@ -487,7 +487,7 @@ for (x in 7:12){
   sum_j = 0.0
   for (x in 1:4578){
     j<-jarque.bera.test(genes_features_v4[,x])
-    if (j$p.value<0.05){
+    if (j$p.value>=0.05){
       sum_j =sum_j +1}}
   print(sum_j)
   cat(round(sum_j/4578*100,2),"%")
