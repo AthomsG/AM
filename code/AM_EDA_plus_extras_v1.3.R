@@ -447,14 +447,15 @@ ggplot(genes_values, aes(x=genes_values$expressivity, y=..count.., fill=stat(cou
 
 for (x in 7:12){
   s<-shapiro.test(patients_features_v4[,x])
-  print(s$p.value)
+    if (s$p.value>=0.05){
+    print(colnames(patients_features_v4)[x])}
 }
 # Lymph node signature, Proliferation signature and Outcome predictor score pass the test
 {
   sum_s = 0.0
   for (x in 1:4578){
     s<-shapiro.test(genes_features_v4[,x])
-    if (s$p.value<0.05){
+    if (s$p.value>=0.05){
       sum_s =sum_s+1}}
   print (sum_s)
   cat(round(sum_s/4578*100,2),"%")
@@ -465,7 +466,7 @@ for (x in 7:12){
   sum_s = 0.0
   for (x in 1:4578){
     s<-shapiro.test(genes_features_v3[,x])
-    if (s$p.value<0.05){
+    if (s$p.value>=0.05){
       sum_s =sum_s+1}}
   print(sum_s)
   cat(round(sum_s/4578*100,2),"%")
@@ -478,7 +479,8 @@ for (x in 7:12){
 
 for (x in 7:12){
   j<-jarque.bera.test(patients_features_v4[,x])
-  print(j$p.value)
+  if (j$p.value>=0.05){
+    print(colnames(patients_features_v4)[x])}
 }
 # Again Lymph node signature, Proliferation signature and Outcome predictor score pass the test
 {
