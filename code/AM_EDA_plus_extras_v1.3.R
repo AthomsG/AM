@@ -562,3 +562,43 @@ image(Samples,
       Genes,
       genes_w_cluster_matrix,
       col = colorpanel(25, "green", "black", "red"))
+
+######################################
+#             K-MEDOIDS              #
+######################################
+{
+  library("fpc")
+  library("dbscan")
+  library("factoextra")
+  library("cluster")
+  library("ggplot2")
+  library(plyr)
+}
+
+data<-read.csv('patients_clean_standardized.csv')
+
+status<-data$Status.at.follow.up
+# Remove  Columns in List
+data <- data[,!names(data) %in% c("Status.at.follow.up")]
+data$IPI.Group = as.numeric(data$IPI.Group) 
+
+fviz_nbclust(data, pam, method = "wss")
+
+#perform k-medoids clustering with k = 2 clusters
+kmed <- pam(data, k = 2)
+
+#view results
+kmed
+
+#plot results of final k-medoids model
+fviz_cluster(kmed, data = data)
+
+{
+kmed_mad<-mapvalues(kmed$clustering, from = c(1, 2), to = c("Dead", "Alive"))
+table(kmed_mad, status)
+}
+
+{
+  kmed_mad<-mapvalues(kmed$clustering, from = c(1, 2), to = c("Alive", "Dead"))
+  table(kmed_mad, status)
+}
